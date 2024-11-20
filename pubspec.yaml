@@ -1,5 +1,5 @@
 name: tilde_expansion
-description: A sample command-line application.
+description: expand ~/ and ~user in paths
 version: 1.0.0
 repository: https://github.com/nohkumado/dart_tilde_expansion/
 
