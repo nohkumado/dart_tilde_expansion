@@ -16,7 +16,7 @@ here a miniature standalone library just for this....
     Flexible Configuration: Customize expansion behavior with optional parameters.
     Efficient Implementation: Optimized for performance and clarity.
 
-##Installation:
+## Installation:
 ```bash
 dart pub add tilde_expansion
 ```
