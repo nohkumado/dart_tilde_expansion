@@ -1,7 +1,7 @@
 # Tilde Expansion for Dart
 
 [![Pub Version](https://img.shields.io/pub/v/tilde_expansion)](https://pub.dev/packages/tilde_expansion)
-[![CI Status](https://github.com/nohkumado/tilde_expansion/actions/workflows/test.yml/badge.svg)](https://github.com/nohkumado/tilde_expansion/actions)
+[![CI Status](https://github.com/nohkumado/dart_tilde_expansion/actions/workflows/test.yml/badge.svg)](https://github.com/nohkumado/dart_tilde_expansion/actions)
 [![License: GPL](https://img.shields.io/badge/license-GPL-purple.svg)](https://opensource.org/license/gpl-3-0-only)
 
 **Expand `~` and `~/` in paths like a shell – cross-platform, lightweight, and zero-dependency.**
@@ -75,18 +75,12 @@ print("Hello to convert ~toto/Documents/test.txt to   ${'~toto/Documents/test.tx
 - Flutter apps: Save user paths (e.g., ~/Downloads) without platform-specific code.
 - Cross-platform projects: Write once, expand everywhere.
 
-## Contributing
-
-Found a bug? Want to add a feature?
-PRs are welcome! Check out the GitHub repo.
-
 ## Running Tests
 
 ```bash
 dart test ## to run the validation tests
 dart run ## to run a minimal example
 ```
-
 
 # Additional Notes:
 
