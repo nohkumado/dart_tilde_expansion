@@ -1,0 +1,20 @@
+name: Dartdoc
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  dartdoc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - name: Generate docs
+        run: dart doc --output=docs
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+

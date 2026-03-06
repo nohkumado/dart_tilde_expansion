@@ -1,6 +1,7 @@
 # Tilde Expansion for Dart
 
 [![Pub Version](https://img.shields.io/pub/v/tilde_expansion)](https://pub.dev/packages/tilde_expansion)
+[![Documentation](https://img.shields.io/badge/docs-api-blue)](https://nohkumado.github.io/dart_tilde_expansion/)
 [![CI Status](https://github.com/nohkumado/dart_tilde_expansion/actions/workflows/test.yml/badge.svg)](https://github.com/nohkumado/dart_tilde_expansion/actions)
 [![License: GPL](https://img.shields.io/badge/license-GPL-purple.svg)](https://opensource.org/license/gpl-3-0-only)
 

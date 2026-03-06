@@ -1,6 +1,6 @@
 name: tilde_expansion
 description: expand ~/ and ~user in paths
-version: 1.0.1
+version: 1.1.0
 repository: https://github.com/nohkumado/dart_tilde_expansion/
 
 environment:
