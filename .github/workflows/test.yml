@@ -12,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - run: sudo mkdir -p /home/docker && sudo chown root:root /home/docker
+
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
