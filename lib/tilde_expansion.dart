@@ -68,7 +68,7 @@ extension PathExtension on String {
       if (homeDir == null) {
         throw Exception('Unable to determine user home directory');
       }
-      if (username == null || username.isEmpty) {
+      if (username.isEmpty) {
         result = homeDir + path.separator + remainingPath;
       } else if (Platform.isLinux || Platform.isMacOS) {
         // Case: `~username` → validate user existence on Unix-like systems
