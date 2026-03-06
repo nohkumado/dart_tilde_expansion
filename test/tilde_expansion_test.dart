@@ -5,11 +5,15 @@ import 'package:test/test.dart';
 
 void main() {
   test('expandUser should expand tilde to home directory', () {
-    final userName = Platform.environment['USER'] ?? Platform.environment['USERNAME'] ?? "user";
-    final homeDir = Platform.environment['HOME'] ?? Platform.environment['USERPROFILE']!;
+    final userName = Platform.environment['USER'] ??
+        Platform.environment['USERNAME'] ??
+        "user";
+    final homeDir =
+        Platform.environment['HOME'] ?? Platform.environment['USERPROFILE']!;
 
     // Fonction pour générer les chemins attendus selon la plateforme
-    String expectedPath(String user, String subPath, {bool canonicalize = false}) {
+    String expectedPath(String user, String subPath,
+        {bool canonicalize = false}) {
       final basePath = Platform.isWindows
           ? 'C:\\Users\\$user\\$subPath'.replaceAll('/', path.separator)
           : '/home/$user/$subPath';
@@ -21,34 +25,42 @@ void main() {
     // Pour les cas d'erreur: [input, exceptionMatcher, null]
     final candidates = [
       // Cas normaux
-      ['path/to/file.txt',
-       'path/to/file.txt',
-       '${Directory.current.path}${path.separator}path${path.separator}to${path.separator}file.txt'],
+      [
+        'path/to/file.txt',
+        'path/to/file.txt',
+        '${Directory.current.path}${path.separator}path${path.separator}to${path.separator}file.txt'
+      ],
 
-      ['/path/to/file.txt',
-       '/path/to/file.txt',
-       '/path/to/file.txt'],
+      ['/path/to/file.txt', '/path/to/file.txt', '/path/to/file.txt'],
 
-      ['~/Documents/test.txt',
-       expectedPath(userName, 'Documents/test.txt'),
-       expectedPath(userName, 'Documents/test.txt', canonicalize: true)],
+      [
+        '~/Documents/test.txt',
+        expectedPath(userName, 'Documents/test.txt'),
+        expectedPath(userName, 'Documents/test.txt', canonicalize: true)
+      ],
 
-      ['~/Documents/../Downloads/test.txt',
-       expectedPath(userName, 'Documents/../Downloads/test.txt'),
-       expectedPath(userName, 'Downloads/test.txt', canonicalize: true)],
+      [
+        '~/Documents/../Downloads/test.txt',
+        expectedPath(userName, 'Documents/../Downloads/test.txt'),
+        expectedPath(userName, 'Downloads/test.txt', canonicalize: true)
+      ],
 
       // Cas spéciaux avec gestion d'erreurs
-      ['~docker/Documents/test.txt',
-       Platform.isWindows
-         ? throwsA(isA<UnsupportedError>())
-         : expectedPath('docker', 'Documents/test.txt'),
-       null],
+      [
+        '~docker/Documents/test.txt',
+        Platform.isWindows
+            ? throwsA(isA<UnsupportedError>())
+            : expectedPath('docker', 'Documents/test.txt'),
+        null
+      ],
 
-      ['~toto/Documents/test.txt',
-       Platform.isWindows
-         ? throwsA(isA<UnsupportedError>())
-         : throwsA(isA<Exception>()),
-       null],
+      [
+        '~toto/Documents/test.txt',
+        Platform.isWindows
+            ? throwsA(isA<UnsupportedError>())
+            : throwsA(isA<Exception>()),
+        null
+      ],
     ];
 
     for (final candidate in candidates) {
@@ -59,7 +71,8 @@ void main() {
         expect(input.expandUser(canonicalize: false), candidate[1],
             reason: '$input should expand to ${candidate[1]}');
       } else {
-        expect(() => input.expandUser(canonicalize: false), candidate[1] as Matcher);
+        expect(() => input.expandUser(canonicalize: false),
+            candidate[1] as Matcher);
       }
 
       // Test avec canonicalize (si présent)

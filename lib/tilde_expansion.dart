@@ -51,7 +51,8 @@ extension PathExtension on String {
     String result = this;
     //RegExp regex = RegExp(r'^~(\w+)?${path.separator|^~${path.separator');
     //RegExp regex = RegExp(r'^~(\w+)?' + (path.separator == '/' ? r'/?' : r'\\?'));
-    final regex = RegExp(r'^~(\w*)' + RegExp.escape(path.separator) + '?(.*?)?\$');
+    final regex =
+        RegExp(r'^~(\w*)' + RegExp.escape(path.separator) + '?(.*?)?\$');
     final match = regex.matchAsPrefix(this);
     if (match != null) {
       //remove the tilde
@@ -59,15 +60,16 @@ extension PathExtension on String {
       // Retrieve the username from the match
       // Note: This assumes that the username is a single word, separated by a single character
       // If the username contains multiple words, this may not work correctly. To handle this, you would need to modify the regex to match multiple words separated by spaces or underscores.
-      final username = match.group(1)??'';
-      final remainingPath = (match.groupCount>1)?match.group(2)??'' : '';
-      final homeDir = Platform.environment['HOME'] ?? Platform.environment['USERPROFILE'];
+      final username = match.group(1) ?? '';
+      final remainingPath = (match.groupCount > 1) ? match.group(2) ?? '' : '';
+      final homeDir =
+          Platform.environment['HOME'] ?? Platform.environment['USERPROFILE'];
       // Retrieve the home directory from environment variables
       if (homeDir == null) {
         throw Exception('Unable to determine user home directory');
       }
       if (username == null || username.isEmpty) {
-        result = homeDir + path.separator+remainingPath;
+        result = homeDir + path.separator + remainingPath;
       } else if (Platform.isLinux || Platform.isMacOS) {
         // Case: `~username` → validate user existence on Unix-like systems
         try {
